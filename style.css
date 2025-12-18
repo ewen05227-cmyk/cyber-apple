@@ -1,414 +1,89 @@
-/* 通用样式 */
+/* 全新升级版 style.css */
 :root {
-    --bg-dark: #0A0A0A;
-    --neon-pink: #FF00FF;
-    --neon-blue: #00F2FF;
-    --text-light: #E0E0E0;
-    --text-muted: #888888;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    --bg-dark: #050505;
+    --neon-blue: #00f2ff;
+    --neon-pink: #ff00ff;
+    --text-light: #ffffff;
 }
 
 body {
-    font-family: 'Oxanium', sans-serif; /* 赛博朋克科技感字体 */
-    background-color: var(--bg-dark);
+    margin: 0;
+    /* 背景图 + 混合模式遮罩 */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534146776152-16123147143c?q=80&w=1974&auto=format&fit=crop') no-repeat center center/cover fixed;
     color: var(--text-light);
-    line-height: 1.6;
-    overflow-x: hidden; /* 防止横向滚动条 */
+    font-family: 'Oxanium', sans-serif;
+    overflow-x: hidden;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-a {
-    color: var(--neon-blue);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: var(--neon-pink);
-    text-shadow: 0 0 5px var(--neon-pink);
-}
-
-/* Header 导航栏 */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: var(--glass-bg);
-    backdrop-filter: blur(15px) saturate(180%);
-    -webkit-backdrop-filter: blur(15px) saturate(180%);
-    border-bottom: 1px solid var(--glass-border);
-    padding: 15px 0;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
-
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    font-family: 'Orbitron', sans-serif; /* logo 使用更粗犷的字体 */
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.logo-icon {
-    color: var(--neon-blue);
-    margin-right: 8px;
-    text-shadow: 0 0 8px var(--neon-blue);
-}
-
-.logo-text {
-    color: var(--text-light);
-    letter-spacing: 1.5px;
-}
-
-header nav ul {
-    list-style: none;
-    display: flex;
-}
-
-header nav ul li {
-    margin-left: 30px;
-}
-
-header nav ul li a {
-    color: var(--text-light);
-    font-weight: 400;
-    letter-spacing: 0.8px;
-    position: relative;
-}
-
-header nav ul li a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
-    transition: width 0.3s ease;
-}
-
-header nav ul li a:hover::after {
-    width: 100%;
-}
-
-.nav-utility span {
-    margin-left: 20px;
-    font-size: 18px;
-    cursor: pointer;
-    color: var(--text-light);
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.nav-utility span:hover {
-    color: var(--neon-blue);
-    text-shadow: 0 0 8px var(--neon-blue);
-}
-
-/* Hero Section 主视觉区域 */
 .hero-section {
-    position: relative;
-    width: 100%;
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    background: url('https://images.unsplash.com/photo-1587620931557-41a4a4b4b2c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-    background-blend-mode: overlay; /* 混合模式，让背景更暗 */
-    /* 增加一个深色半透明遮罩 */
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7); /* 更深的遮罩 */
-    }
-}
-
-.hero-content {
-    position: relative; /* 确保内容在背景之上 */
-    z-index: 1;
-    animation: fadeIn 1.5s ease-out;
 }
 
 .hero-title {
+    font-size: 3rem;
     font-family: 'Orbitron', sans-serif;
-    font-size: 4.5em; /* 进一步增大标题 */
-    font-weight: 700;
+    text-transform: uppercase;
     color: var(--text-light);
-    letter-spacing: 2px;
-    text-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-pink); /* 更强的霓虹光效 */
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    /* 故障 (Glitch) 动画核心代码 */
+    text-shadow: 0.05em 0 0 rgba(255, 0, 255, 0.75),
+                -0.025em -0.05em 0 rgba(0, 255, 255, 0.75),
+                0.025em 0.05em 0 rgba(255, 255, 0, 0.75);
+    animation: glitch 750ms infinite;
+}
+
+/* 定义故障动画的关键帧 */
+@keyframes glitch {
+    0% { text-shadow: 0.05em 0 0 rgba(255, 0, 255, 0.75), -0.05em -0.025em 0 rgba(0, 255, 255, 0.75); }
+    15% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 255, 0.75), 0.025em 0.025em 0 rgba(0, 255, 255, 0.75); }
+    49% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 255, 0.75), 0.025em 0.025em 0 rgba(0, 255, 255, 0.75); }
+    50% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 255, 0.75), 0.05em 0 0 rgba(0, 255, 255, 0.75); }
+    99% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 255, 0.75), 0.05em 0 0 rgba(0, 255, 255, 0.75); }
+    100% { text-shadow: -0.025em 0 0 rgba(255, 0, 255, 0.75), -0.025em -0.025em 0 rgba(0, 255, 255, 0.75); }
 }
 
 .hero-subtitle {
-    font-size: 1.5em;
-    color: var(--text-light);
-    margin-bottom: 40px;
-    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+    font-size: 1.2rem;
+    color: var(--neon-blue);
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px var(--neon-blue); /* 给副标题也加点光 */
 }
 
 .hero-button {
-    background-color: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 242, 255, 0.1); /* 按钮增加半透明背景 */
     border: 1px solid var(--neon-blue);
     color: var(--neon-blue);
-    padding: 15px 40px;
-    font-size: 1.2em;
-    font-weight: 700;
-    border-radius: 8px;
+    padding: 12px 35px;
+    border-radius: 30px; /* 更圆润的苹果风格 */
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
     cursor: pointer;
-    transition: all 0.4s ease;
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+    font-family: 'Orbitron', sans-serif;
     letter-spacing: 1px;
-}
-
-.hero-button:hover {
-    background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
-    color: var(--bg-dark);
-    border-color: transparent;
-    box-shadow: 0 0 25px var(--neon-pink), 0 0 40px var(--neon-blue);
-    transform: translateY(-3px) scale(1.02);
-}
-
-/* Features Section 功能展示区 */
-.features-section {
-    padding: 80px 0;
-    background-color: var(--bg-dark);
-    position: relative;
-}
-
-.features-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.features-section h2 {
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-    font-size: 3em;
-    color: var(--text-light);
-    margin-bottom: 60px;
-    text-shadow: 0 0 15px var(--neon-pink);
-    letter-spacing: 1.5px;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
-}
-
-.feature-card {
-    background-color: var(--glass-bg);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid var(--neon-blue);
-    border-radius: 12px;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.feature-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(from 0deg at 50% 50%, transparent 0%, rgba(255, 0, 255, 0.3) 10%, transparent 20%, rgba(0, 242, 255, 0.3) 30%, transparent 40%, rgba(255, 0, 255, 0.3) 50%, transparent 60%, rgba(0, 242, 255, 0.3) 70%, transparent 80%, rgba(255, 0, 255, 0.3) 90%, transparent 100%);
-    animation: cardScan 8s linear infinite;
-    opacity: 0.1;
-    pointer-events: none;
-}
-
-.feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 35px var(--neon-pink), 0 0 50px var(--neon-blue);
-    border-color: var(--neon-pink);
-}
-
-.card-icon {
-    font-size: 3.5em;
-    margin-bottom: 20px;
-    color: var(--neon-blue);
-    text-shadow: 0 0 15px var(--neon-blue);
-    animation: iconGlow 2s ease-in-out infinite alternate;
-}
-
-.feature-card h3 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.8em;
-    color: var(--text-light);
-    margin-bottom: 15px;
-    text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
-    letter-spacing: 0.5px;
-}
-
-.feature-card p {
-    color: var(--text-muted);
-    font-size: 1.1em;
-}
-
-/* Footer 底部信息区 */
-footer {
-    background-color: var(--bg-dark);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 30px 0;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.9em;
-}
-
-footer .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* 确保在小屏幕下能换行 */
-}
-
-.social-links {
-    margin-top: 10px; /* 小屏幕下与版权信息分隔 */
-}
-
-.social-icon {
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-    background-color: var(--glass-bg);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid var(--neon-blue);
-    border-radius: 50%;
-    margin: 0 8px;
-    color: var(--neon-blue);
-    font-size: 1.1em;
     transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
 }
 
-.social-icon:hover {
-    background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
-    color: var(--bg-dark);
-    border-color: transparent;
-    box-shadow: 0 0 15px var(--neon-pink), 0 0 25px var(--neon-blue);
-    transform: translateY(-2px);
+/* 头部导航栏样式优化 */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 20px;
+    /* 更强的毛玻璃效果，适配 Safari */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 100;
 }
-
-/* 动画 */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes iconGlow {
-    0% { text-shadow: 0 0 15px var(--neon-blue); }
-    50% { text-shadow: 0 0 20px var(--neon-pink), 0 0 10px var(--neon-blue); }
-    100% { text-shadow: 0 0 15px var(--neon-blue); }
-}
-
-@keyframes cardScan {
-    0% { transform: rotate(0deg); opacity: 0.1; }
-    50% { opacity: 0.2; }
-    100% { transform: rotate(360deg); opacity: 0.1; }
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-    header .container {
-        flex-direction: column;
-    }
-    header nav {
-        margin-top: 15px;
-        order: 3; /* 将导航放到最底部，保持 logo 在顶部 */
-    }
-    header nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    header nav ul li {
-        margin: 0 15px 10px;
-    }
-    .nav-utility {
-        margin-top: 15px;
-        order: 2; /* 将搜索图标等放到导航上面 */
-    }
-
-    .hero-title {
-        font-size: 3em;
-    }
-    .hero-subtitle {
-        font-size: 1.2em;
-    }
-
-    .features-section h2 {
-        font-size: 2.2em;
-    }
-
-    .feature-grid {
-        grid-template-columns: 1fr; /* 小屏幕下变成单列 */
-    }
-
-    footer .container {
-        flex-direction: column;
-    }
-    .social-links {
-        margin-top: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2.2em;
-    }
-    .hero-subtitle {
-        font-size: 1em;
-    }
-    .hero-button {
-        padding: 12px 30px;
-        font-size: 1em;
-    }
-    .features-section h2 {
-        font-size: 1.8em;
-    }
-    .feature-card h3 {
-        font-size: 1.5em;
-    }
-    .card-icon {
-        font-size: 3em;
-    }
-}
+.container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'Orbitron', sans-serif; font-weight: 700; display: flex; align-items: center;}
+.logo-icon { color: var(--neon-pink); font-size: 24px; margin-right: 8px; text-shadow: 0 0 12px var(--neon-pink); }
+.logo-text { color: var(--text-light); letter-spacing: 1.2px; font-size: 1.1rem; }
+nav ul { list-style: none; padding: 0; margin: 0; display: flex; }
+nav ul li { margin-left: 25px; }
+nav ul li a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: all 0.3s ease; }
